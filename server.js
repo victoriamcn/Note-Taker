@@ -25,9 +25,9 @@ app.use('/api', api);
 app.use(express.static('public'));
 
 //event listener for save button
-saveBtn.on('click', function ()
+saveBtn.on('click', function () {
     //send input to the sever
     app.get('/', (req, res) => {
         res.send(`${inputTitle} ${inputNote}`)
     })
-)
+})
