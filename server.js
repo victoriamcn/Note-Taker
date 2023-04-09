@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const middleware = require('./middleware/custommiddleware.js');
 const api = require('./routes/routes.js'); // not sure if I'll use this
+const db = require('./db/db.json');
 
 const PORT = process.env.port || 3001;
 
@@ -23,15 +24,33 @@ app.use(express.static('public'));
 // require('./routes/htmlRoutes')(app);
 
 // Create Express.js routes for default '/', '/send' and '/routes' endpoints
-server.get('/', (req, res) => res.send('Navigate to /send or /routes'));
+app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
 
-server.get('/send', (req, res) =>
+app.get('/send', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/sendFile.html'))
 );
 
-server.get('/routes', (req, res) =>
+app.get('/routes', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/routes.html'))
 );
+
+app.post('/db', (req, res) => res.json(db));
+
+// GET route that returns any specific term
+app.get('/api/terms/:term', (req, res) => {
+  // Coerce the specific search term to lowercase
+  const requestedTerm = req.params.term.toLowerCase();
+
+  // Iterate through the terms name to check if it matches `req.params.term`
+  for (let i = 0; i < termData.length; i++) {
+    if (requestedTerm === termData[i].term.toLowerCase()) {
+      return res.json(termData[i]);
+    }
+  }
+
+  // Return a message if the term doesn't exist in our DB
+  return res.json('No match found');
+});)
 
 //ERRORS
 app.use((req, res, next) => {
