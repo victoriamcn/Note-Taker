@@ -37,20 +37,20 @@ app.get('/routes', (req, res) =>
 app.post('/db', (req, res) => res.json(db));
 
 // GET route that returns any specific term
-app.get('/api/terms/:term', (req, res) => {
+app.get('/db/:db', (req, res) => {
   // Coerce the specific search term to lowercase
-  const requestedTerm = req.params.term.toLowerCase();
+  const requestedDB = req.params.db;
 
   // Iterate through the terms name to check if it matches `req.params.term`
-  for (let i = 0; i < termData.length; i++) {
-    if (requestedTerm === termData[i].term.toLowerCase()) {
-      return res.json(termData[i]);
+  for (let i = 0; i < requestedDB.length; i++) {
+    if (requestedTerm === requestedDB[i].db) {
+      return res.json(requestedDB[i]);
     }
   }
 
   // Return a message if the term doesn't exist in our DB
   return res.json('No match found');
-});)
+});
 
 //ERRORS
 app.use((req, res, next) => {
