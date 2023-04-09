@@ -1,7 +1,7 @@
 //EXPRESS
 const express = require('express');
 const path = require('path');
-//const middleware = require('./middleware/custommiddleware.js'); // not sure if I'll use this
+//const mymiddleware = require('./middleware/mymiddleware.js'); // not sure if I'll use this
 const api = require('./routes/notes.js');
 const db = require('./db/db.json');
 
@@ -16,7 +16,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
-//middleware
 app.use(express.static('public'));
 
 // GET Route for homepage
@@ -28,6 +27,8 @@ app.get('/', (req, res) =>
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
+
+// DELETE Route for notes page, when user presses delete btn
 
 //ERRORS
 app.use((req, res, next) => {

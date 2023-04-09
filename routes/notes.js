@@ -18,11 +18,12 @@ notes.post('/', (req, res) => {
   if (title && text) {
     // Variable for the object we will save
     const newNote = {
-      title, text,
-      feedback_id: uuidv4(),
+      title,
+      text,
+      note_id: uuidv4(),
     };
 
-    readAndAppend(newFeedback, './db/db.json');
+    readAndAppend(newNote, './db/db.json');
 
     const response = {
       status: 'success',
