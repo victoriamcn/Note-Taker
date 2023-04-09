@@ -1,8 +1,8 @@
 //EXPRESS
 const express = require('express');
 const path = require('path');
-const middleware = require('./middleware/custommiddleware.js');
-const api = require('./routes/routes.js'); // not sure if I'll use this
+//const middleware = require('./middleware/custommiddleware.js'); // not sure if I'll use this
+const api = require('./routes/notes.js');
 const db = require('./db/db.json');
 
 const PORT = process.env.port || 3001;
@@ -10,7 +10,7 @@ const PORT = process.env.port || 3001;
 const app = express();
 
 // Import custom middleware
-app.use(middleware);
+//app.use(middleware);
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
@@ -19,38 +19,15 @@ app.use('/api', api);
 //middleware
 app.use(express.static('public'));
 
-// routes to route files
-// require('./routes/apiRoutes')(app);
-// require('./routes/htmlRoutes')(app);
-
-// Create Express.js routes for default '/', '/send' and '/routes' endpoints
-app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
-
-app.get('/send', (req, res) =>
-    res.sendFile(path.join(__dirname, 'public/sendFile.html'))
+// GET Route for homepage
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-app.get('/routes', (req, res) =>
-    res.sendFile(path.join(__dirname, 'public/routes.html'))
+// GET Route for notes page
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
-
-app.post('/db', (req, res) => res.json(db));
-
-// GET route that returns any specific term
-app.get('/db/:db', (req, res) => {
-  // Coerce the specific search term to lowercase
-  const requestedDB = req.params.db;
-
-  // Iterate through the terms name to check if it matches `req.params.term`
-  for (let i = 0; i < requestedDB.length; i++) {
-    if (requestedTerm === requestedDB[i].db) {
-      return res.json(requestedDB[i]);
-    }
-  }
-
-  // Return a message if the term doesn't exist in our DB
-  return res.json('No match found');
-});
 
 //ERRORS
 app.use((req, res, next) => {
@@ -65,5 +42,5 @@ app.use((err, req, res, next) => {
 
 // starts the server
 app.listen(PORT, () => {
-    console.log(`Server available at localhost${PORT}`);
+    console.log(`App listening at http://localhost${PORT}`);
 });
