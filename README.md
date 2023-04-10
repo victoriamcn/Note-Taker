@@ -14,16 +14,19 @@
 Uses an Express.js back end and will save and retrieve note data from a JSON file so that it can be used to write and save notes
 
 ## Table of Contents
+- [Deployed Application](#deployed-application)
 - [Mock-Up](#mock-up)
 - [User Story](#user-story)
 - [Installation](#installation)
 - [Tests](#tests)
 - [Usage](#usage)
-- [Demo](#demo)
 - [Contributing](#contributing)
 - [Questions](#questions)
 - [License](#license)
 - [Credits](#credits)
+
+## Deployed Application
+[https://agile-reef-91926.herokuapp.com/](https://agile-reef-91926.herokuapp.com/)
 
 ## Mock Up
 The following images show the web application's appearance and functionality:
@@ -46,30 +49,16 @@ To install please run:
 npm i install
 ```
 
-## Tests
-
-- Testing: [jest](https://www.npmjs.com/package/jest)
-
-To test please run:
-```
-npm run test
-```
-
 ## Usage
 
 1. Clone this repository to your local computer.
 2. Open the repo in VS Code.
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-
-## Demo
-
-Click to watch the [demo](URL) on YouTube.
+3. Open the repository in the terminal.
+4. In the command line type"
+```
+npm i install
+```
+5. Use the text: "App listening at http://localhost:PORT" to open in your preferred web browser.
 
 ## Contributing
 
@@ -90,10 +79,12 @@ To view my other projects, you may visit my Git Hub profile: [victoriamcn](https
 
 ### Georgia Tech Staff
 - My instructor, [Saurav Khatiwada](https://github.com/khatiwadasaurav).
-- My tutor, [Neil Dhand](https://github.com/neildhand).
+- My tutor, Jain Dixit.
 
 ### Example Code
-- abc []()
+- Taken from the in-class activities and mini-project.
 
 ### Tutorials
-- abc []()
+- Heroku Cheat Sheet []()
+- express.js [FAQ](https://expressjs.com/en/starter/faq.html)
+- medium.com [THE BEGINNER’S GUIDE: Understanding Node.js & Express.js fundamentals](https://medium.com/@LindaVivah/the-beginners-guide-understanding-node-js-express-js-fundamentals-e15493462be1)
