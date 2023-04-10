@@ -54,7 +54,7 @@ npm i install
 1. Clone this repository to your local computer.
 2. Open the repo in VS Code.
 3. Open the repository in the terminal.
-4. In the command line type"
+4. In the command line type:
 ```
 npm i install
 ```
